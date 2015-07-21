@@ -79,3 +79,5 @@ class DandbSpider(Spider):
         zip = zip[0].strip() if zip else ''
         phone = sel.xpath(PHONE_XPATH).extract()
         phone = phone[0].strip() if phone else ''
+        url = sel.xpath(URL_XPATH).extract()
+        url = url[0].strip() if url else ''
