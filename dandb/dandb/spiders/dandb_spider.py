@@ -102,3 +102,20 @@ class DandbSpider(Spider):
         industries = industries[0].strip() if industries else ''
         contacts = sel.xpath(CONTACT_XPATH).extract()
         contacts = contacts[0].strip() if contacts else ''
+
+        item = DandbItem({'business_url': business_url,
+                          'business_name': business_name,
+                          'street': street,
+                          'city': city,
+                          'state': state,
+                          'zip': zip,
+                          'phone': phone,
+                          'url': url,
+                          'email': email,
+                          'founded': founded,
+                          'incorporated': incorporated,
+                          'revenue': revenue,
+                          'employee': employee,
+                          'industries': industries,
+                          'contacts': contacts})
+        yield item
