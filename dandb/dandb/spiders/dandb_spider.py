@@ -66,6 +66,7 @@ class DandbSpider(Spider):
         PHONE_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//a[@class="tel"]/text()'
         URL_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//a[@class="web"]/@href'
         EMAIL_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//a[starts-with(@href,"mailto:")]/@href'
+        FOUNDED_XPATH = '//section[@class="midd_sec"]/section[@class="box"]//ul[@class="list "]/li[contains(text(),"Founded")]/span/text()'
 
         business_url = response.url
         business_name = sel.xpath(BUSINESS_NAME_XPATH).extract()
