@@ -63,3 +63,5 @@ class DandbSpider(Spider):
 
         business_name = sel.xpath(BUSINESS_NAME_XPATH).extract()
         business_name = business_name[0].strip() if business_name else ''
+        street = sel.xpath(STREET_XPATH).extract()
+        street = street[0].strip() if street else ''
