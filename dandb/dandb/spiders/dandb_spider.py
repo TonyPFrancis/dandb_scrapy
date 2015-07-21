@@ -61,6 +61,7 @@ class DandbSpider(Spider):
         BUSINESS_NAME_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//h3/text()'
         STREET_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//p[@class="address"]/span[@class="address_street"]/text()'
         CITY_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//p[@class="address"]/span[@class="address_city"]/text()'
+        STATE_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//p[@class="address"]/span[@class="address_state"]/text()'
 
         url = response.url
         business_name = sel.xpath(BUSINESS_NAME_XPATH).extract()
