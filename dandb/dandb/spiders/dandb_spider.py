@@ -59,6 +59,7 @@ class DandbSpider(Spider):
         sel = Selector(response)
 
         BUSINESS_NAME_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//h3/text()'
+        STREET_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//p[@class="address"]/span[@class="address_street"]/text()'
 
         business_name = sel.xpath(BUSINESS_NAME_XPATH).extract()
         business_name = business_name[0].strip() if business_name else ''
