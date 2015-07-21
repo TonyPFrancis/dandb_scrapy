@@ -70,3 +70,5 @@ class DandbSpider(Spider):
         street = street[0].strip() if street else ''
         city = sel.xpath(CITY_XPATH).extract()
         city = city[0].strip() if city else ''
+        state = sel.xpath(STATE_XPATH).extract()
+        state = state[0].strip() if state else ''
