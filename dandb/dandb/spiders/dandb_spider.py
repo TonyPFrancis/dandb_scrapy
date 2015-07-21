@@ -70,6 +70,7 @@ class DandbSpider(Spider):
         INCORPORATED_XPATH = '//section[@class="midd_sec"]/section[@class="box"]//ul[@class="list "]/li[contains(text(),"Incorporated")]/span/text()'
         REVENUE_XPATH = '//section[@class="midd_sec"]/section[@class="box"]//ul[@class="list "]/li[contains(text(),"Revenue")]/span/text()'
         EMPLOYEE_XPATH = '//section[@class="midd_sec"]/section[@class="box"]//ul[@class="list "]/li[contains(text(),"Employee Count")]/span/text()'
+        INDUSTRIES_XPATH = '//section[@class="midd_sec"]/section[@class="box"]//ul[@class="list "]/li[contains(text(),"Industries")]/span/text()'
 
         business_url = response.url
         business_name = sel.xpath(BUSINESS_NAME_XPATH).extract()
