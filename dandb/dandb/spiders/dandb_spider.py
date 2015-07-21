@@ -25,3 +25,37 @@ class DandbSpider(Spider):
     allowed_domains = ['dandb.com', ]
     TIMEZONE = ''
     BASE_URL = 'https://www.dandb.com'
+    HEADERS = {'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36'}
+
+    def __init__(self, name=None, **kwargs):
+        ScrapyFileLogObserver(open("spider.log", 'w'), level=log.INFO).start()
+        ScrapyFileLogObserver(open("spider_error.log", 'w'), level=log.ERROR).start()
+        super(DandbSpider, self).__init__(name, **kwargs)
+
+    def parse(self, response):
+        sel = Selector(response)
+
+        search_url = 'https://www.dandb.com/businessdirectory/search/?keyword=Enter+business+name%2C+phone%2C+or+DUNS'
+        yield Request(url=search_url, headers=self.HEADERS, callback=self.parse_search)
+
+    def parse_search(self, response):
+        sel = Selector(response)
+
+        HEADERS = self.HEADERS
+        HEADERS['Cookie'] = response.headers['Set-Cookie']
+
+        BUSINESS_LINKS_XPATH = '//div[@class="result_sec"]/a[@data-rank]/@href'
+
+        business_links = sel.xpath('//div[@class="result_sec"]/a[@data-rank]/@href').extract()
+        if business_links:
+            for business_link in business_links:
+                business_link = (business_link if business_link.startswith('http') else self.BASE_URL+business_link) if business_link else ''
+                sleep(5)
+                yield Request(url=business_link, dont_filter=True, headers=HEADERS, callback=self.parse_business)
+        else:
+            return
+
+    def parse_business(self, response):
+        sel = Selector(response)
+
+        BUSINESS_NAME_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//h3/text()'
