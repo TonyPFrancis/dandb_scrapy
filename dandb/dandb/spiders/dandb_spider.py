@@ -55,6 +55,8 @@ class DandbSpider(Spider):
         else:
             return
 
+        NEXT_PAGE_XPATH = '//div[@class="paging"]/ul/li[@class="next"]/a/@href'
+
     def parse_business(self, response):
         sel = Selector(response)
 
