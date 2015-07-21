@@ -94,3 +94,5 @@ class DandbSpider(Spider):
         incorporated = incorporated[0].strip() if incorporated else ''
         revenue = sel.xpath(REVENUE_XPATH).extract()
         revenue = revenue[0].strip() if revenue else ''
+        employee = sel.xpath(EMPLOYEE_XPATH).extract()
+        employee = employee[0].strip() if employee else ''
