@@ -11,13 +11,14 @@ from scrapy.item import Field, Item
 class DandbItem(Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    url = Field()
+    business_url = Field()
     business_name = Field()
     street = Field()
     city = Field()
     state = Field()
     zip = Field()
     phone = Field()
+    url = Field()
     email = Field()
     founded = Field()
     incorporated = Field()
