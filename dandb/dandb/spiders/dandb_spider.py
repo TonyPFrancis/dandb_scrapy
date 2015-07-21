@@ -19,3 +19,9 @@ from scrapy.shell import inspect_response
 import time
 import json
 
+class DandbSpider(Spider):
+    name = 'dandb'
+    start_urls = ['https://www.dandb.com', ]
+    allowed_domains = ['dandb.com', ]
+    TIMEZONE = ''
+    BASE_URL = 'https://www.dandb.com'
