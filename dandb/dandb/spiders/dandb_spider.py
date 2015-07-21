@@ -65,6 +65,7 @@ class DandbSpider(Spider):
         ZIP_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//p[@class="address"]/span[@class="address_zip"]/text()'
         PHONE_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//a[@class="tel"]/text()'
         URL_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//a[@class="web"]/@href'
+        EMAIL_XPATH = '//section[@class="midd_sec"]/section[@class="box basic_info_box"]//a[starts-with(@href,"mailto:")]/@href'
 
         business_url = response.url
         business_name = sel.xpath(BUSINESS_NAME_XPATH).extract()
