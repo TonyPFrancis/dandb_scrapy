@@ -5,10 +5,23 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy.item import Field, Item
 
 
-class DandbItem(scrapy.Item):
+class DandbItem(Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    url = Field()
+    business_name = Field()
+    street = Field()
+    city = Field()
+    state = Field()
+    zip = Field()
+    phone = Field()
+    email = Field()
+    founded = Field()
+    incorporated = Field()
+    revenue = Field()
+    employee = Field()
+    industries = Field()
+    contacts = Field()
