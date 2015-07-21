@@ -58,6 +58,9 @@ class DandbSpider(Spider):
         NEXT_PAGE_XPATH = '//div[@class="paging"]/ul/li[@class="next"]/a/@href'
         next_page = sel.xpath(NEXT_PAGE_XPATH).extract()
         next_page = (next_page[0] if next_page[0].startswith('http') else self.BASE_URL+next_page[0]) if next_page else ''
+        if next_page:
+            sleep(5)
+            yield Request(url=next_page, headers=self.HEADERS, callback=self.parse_search)
 
     def parse_business(self, response):
         sel = Selector(response)
