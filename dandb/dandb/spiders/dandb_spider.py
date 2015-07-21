@@ -82,3 +82,5 @@ class DandbSpider(Spider):
         phone = phone[0].strip() if phone else ''
         url = sel.xpath(URL_XPATH).extract()
         url = url[0].strip() if url else ''
+        email = sel.xpath(EMAIL_XPATH).extract()
+        email = email[0].lstrip('mailto:').strip() if email else ''
